@@ -1,3 +1,5 @@
+'got this from that pdf. kind of fun and/or hilarious
+
 ' Speak.vbs 
 ' Creates an instance of the Microsoft Speech API 
 ' COM object and sends it text to speak. 
