@@ -30,7 +30,7 @@ If Wscript.Arguments.Count > 0 Then
         Call Log(EventLevelTypeInformational, "Parameters specified.")
         Set objInParams = objSmTasks.Methods_(strMethodName).inParameters.SpawnInstance_()
         Call Log(EventLevelTypeInformational, "Successfully created the input parameters object.")
-
+'different comment
         ' Add the input parameters.
         ArgIndex = 1
         For Each objInParam in objInParams.Properties_
