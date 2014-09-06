@@ -5,6 +5,53 @@
     <meta charset="utf-8" />
     <title>chapter 12: object constructers</title>
     <script>
+
+
+        // exercise from pg. 531
+        // mine is a little different from the book's solution
+        // but the output is the same so I'm calling it good
+        function Coffee(roast, ounces) {
+            this.roast = roast;
+            this.ounces = ounces;
+
+            this.getSize = function () {
+                var size = "small";
+                if (this.ounces == 12) {
+                    size = "medium";
+                } else  {
+                    size = "large";
+                }
+                return size;
+            };
+
+            this.toString = function() {
+                var orderString = "You've ordered a "
+                    + this.getSize() + " "
+                    + this.roast
+                    + " coffee.";
+                return orderString;
+           }
+        }
+
+
+        var houseBlend = new Coffee("House Blend", 12);
+        console.log(houseBlend.toString());
+
+        var darkRoast = new Coffee("Dark Roast", 16);
+        console.log(darkRoast.toString());
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*
      // old literal way (pg. 525)
         var dog = {
@@ -14,8 +61,8 @@
             weight: 38
         };
 */
-        // new contsructor way
-
+       // new contsructor way
+/*
         // name, Dog, is capped "by convention"
         function Dog(name, breed, weight) {
             // property/parameters 
@@ -43,7 +90,7 @@
         for (var i = 0; i < dogs.length; i++) {
             dogs[i].bark();
         }
-
+*/
 
 // replacing this for loop with new for loop from pg. 530
 /*        for (var i = 0; i < dogs.length; i++) {
