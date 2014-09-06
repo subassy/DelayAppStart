@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <title>chapter 12: object constructers</title>
     <script>
-
+        // exercise from pg. 537
         function Vehicle(make, model, year, color, passengers, convertible, mileage) {
             this.make = make;
             this.model = model;
@@ -22,9 +22,10 @@
 
             this.drive = function () {
                 if (this.started) {
-                    alert("Zoom zoom!");
+                    console.log(this.make + " " + this.model +
+                        " goes zoom zoom!");
                 } else {
-                    alert("You need to start the engine first.")
+                    console.log("Start the engine first.");
                 }
             };
 
@@ -33,12 +34,24 @@
             };
         }
 
+        // pg. 538 stuff
 
+        var chevy = new Vehicle("Chevy", "Bel Air", 1957, "red", 2, false, 1021);
+        var cadi = new Vehicle("GM", "Cadallac", 1955, "tan", 5, false, 12892);
+        var taxi = new Vehicle("Webville", "Taxi", 1955, "yellow", 4, false, 281341);
+        var fiat = new Vehicle("Fiat", "500", 1957, "Medium Blue", 2, false, 88000);
 
+// this is my own creation...
+        var BatCar = new Vehicle("Bat Man's", "Bat Mobile", 1969, "black", 2, false, 2000);
 
+        var cars = [chevy, cadi, taxi, fiat, BatCar];
 
-
-
+        for (var i = 0; i < cars.length; i++) {
+            cars[i].start();
+            cars[i].drive();
+            cars[i].drive();
+            cars[i].stop();
+        }
 /*
         // exercise from pg. 531
         // mine is a little different from the book's solution
