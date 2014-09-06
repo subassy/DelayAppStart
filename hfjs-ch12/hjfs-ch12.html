@@ -1,9 +1,34 @@
 ﻿<!DOCTYPE html>
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<html >
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>chapter 12: object constructers</title>
+    <script>
+/*
+     // old literal way (pg. 525)
+        var dog = {
+
+            name: "fido",
+            breed: "Mixed",
+            weight: 38
+        };
+*/
+        // new contsructor way
+
+        // name, Dog, is capped "by convention"
+        function Dog(name, breed, weight) {
+            // property/parameters 
+            // names don't have to be the same 
+            // just a "convention"
+            this.name = name;
+            this.breed = breed;
+            this.weight = weight;
+
+        }
+
+    </script>
+
 </head>
 <body>
 
