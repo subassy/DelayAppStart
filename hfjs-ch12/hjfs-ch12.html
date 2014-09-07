@@ -5,6 +5,55 @@
     <meta charset="utf-8" />
     <title>chapter 12: object constructers</title>
     <script>
+
+        // re-working the constructors, pg. 540/541
+
+        var cadiParams = {
+            make: "GM",
+            model: "Cadillac",
+            year: 1955,
+            color: "tan",
+            passengers: 5,
+            convertible: false,
+            mileage: 12892
+        };
+
+        var cadi = new Vehicle(cadiParams);
+
+        function Vehicle(params) {
+            this.make = params.make;
+            this.model = params.model;
+            this.year = params.year;
+            this.color = params.color;
+            this.passengers = params.passengers;
+            this.convertible = params.convertible;
+            this.mileage = params.mileage;
+            this.started = params.started = false;
+
+            this.start = function () {
+                this.started = true;
+            };
+
+            this.stop = function () {
+                this.started = false;
+            };
+
+            this.drive = function () {
+                if (this.started) {
+                    // used console.log instead of alerts. just better                                                                                                                                                                                                                                                                                                                              
+                    console.log("Zoom zoom!");
+                } else {
+                    console.log("You need to start the engine first");
+                }
+            };
+        }
+
+        cadi.start();
+        cadi.drive();
+        cadi.stop();
+
+
+/*
         // exercise from pg. 537
         function Vehicle(make, model, year, color, passengers, convertible, mileage) {
             this.make = make;
@@ -54,6 +103,7 @@
         }
 
         BatCar.drive();
+*/
 /*
         // exercise from pg. 531
         // mine is a little different from the book's solution
