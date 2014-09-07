@@ -4,6 +4,38 @@
 <head>
     <meta charset="utf-8" />
     <title>Chapter 13: Inheritance</title>
+    <script>
+        // first part, pg. 576
+        // constructor
+        function Dog(name, breed, weight) {
+            this.name = name;
+            this.breed = breed;
+            this.weight = weight;
+            //methods in prototype
+        }
+
+        Dog.prototype.species = "Canine";
+
+        Dog.prototype.bark = function() {
+            if (this.weight > 25) {
+                console.log(this.name + " says Woof!");
+            } else {
+                console.log(this.name + " says Yip!");
+            }
+        };
+
+        Dog.prototype.run = function() {
+            console.log("Run!");
+        };
+
+        Dog.prototype.wag = function() {
+            console.log("Wag!");
+        };
+
+
+
+
+    </script>
 </head>
 <body>
 
