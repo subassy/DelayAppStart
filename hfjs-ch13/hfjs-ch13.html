@@ -6,7 +6,63 @@
     <title>Chapter 13: Inheritance</title>
     <script>
 
-/**************** robot exercise, pg. 583 ****************/
+/**************** dog exercise, pg. 584 ****************/
+        // constructor
+        function Dog(name, breed, weight) {
+            this.name = name;
+            this.breed = breed;
+            this.weight = weight;
+            //methods in prototype
+        }
+
+        Dog.prototype.species = "Canine";
+
+        Dog.prototype.bark = function () {
+            if (this.weight > 25) {
+                console.log(this.name + " says Woof!");
+            } else {
+                console.log(this.name + " says Yip!");
+            }
+        };
+
+        Dog.prototype.run = function () {
+            console.log("Run!");
+        };
+
+        Dog.prototype.wag = function () {
+            console.log("Wag!");
+        };
+
+//        var fido = new Dog("Fido", "Mixed", 38);
+//        var fluffy = new Dog("Fluffy", "Poodle", 30);
+        var spot = new Dog("Spot", "Chihuahua", 10);
+
+        var barnaby = new Dog("Barnaby", "Basset House", 55);
+
+        spot.bark = function () {
+            console.log(this.name + " says WOOF!");
+        }
+
+        Dog.prototype.sitting = false;
+
+        Dog.prototype.sit = function () {
+            if (this.sitting) {
+                console.log(this.name + " is already sitting");
+            } else {
+                this.sitting = true;
+                console.log(this.name + " is now sitting");
+            }
+        };
+
+        barnaby.sit();
+        barnaby.sit();
+
+        spot.sit();
+        spot.sit();
+
+/**************** dog exercise, pg. 584 ****************/
+
+/**************** robot exercise, pg. 583 ****************
         function Game() {
             this.level = 0;
         }
@@ -43,7 +99,7 @@
         robby.deployLaser();
         rosie.deployLaser();
 
-/**************** robot exercise, pg. 583 ****************/
+**************** robot exercise, pg. 583 ****************/
 
 /**************** robot exercise, pg. 579 ****************
         function Robot(name, year, owner) {
