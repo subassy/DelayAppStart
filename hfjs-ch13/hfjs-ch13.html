@@ -59,15 +59,24 @@
         };
 
 
-        
+        function ShowDog(name, breed, weight, handler) {
+            /* 
+            from pg. 603
+            replacing some redudnant code
+            call is a built-in method
+            */
+            Dog.call(this, name, breed, weight);
+            this.handler = handler;
+        }
 
+/* (old version)
         function ShowDog(name, breed, weight, handler) {
             this.name = name;
             this.breed = breed;
             this.weight = weight;
             this.handler = handler;
         }
-
+*/
         ShowDog.prototype = new Dog();
         // will work without this below constructor line
         //but is considered "best practice to include it
