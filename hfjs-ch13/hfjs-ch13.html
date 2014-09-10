@@ -69,6 +69,10 @@
         }
 
         ShowDog.prototype = new Dog();
+        // will work without this below constructor line
+        //but is considered "best practice to include it
+        // pg. 602
+        ShowDog.prototype.constructor = ShowDog;
 
         ShowDog.prototype.league = "Webville";
 
