@@ -7,7 +7,116 @@
     <script>
 
 
-        // re-inserted existing robot code from below //
+        // support code for the pg. 600 exercise code.
+
+        // constructor
+        function Dog(name, breed, weight) {
+            this.name = name;
+            this.breed = breed;
+            this.weight = weight;
+            //methods in prototype
+        }
+
+
+
+        Dog.prototype.species = "Canine";
+
+        Dog.prototype.bark = function () {
+            if (this.weight > 25) {
+                console.log(this.name + " says Woof!");
+            } else {
+                console.log(this.name + " says Yip!");
+            }
+        };
+
+        Dog.prototype.run = function () {
+            console.log("Run!");
+        };
+
+        Dog.prototype.wag = function () {
+            console.log("Wag!");
+        };
+
+        var fido = new Dog("Fido", "Mixed", 38);
+        //        var fluffy = new Dog("Fluffy", "Poodle", 30);
+        var spot = new Dog("Spot", "Chihuahua", 10);
+
+        var barnaby = new Dog("Barnaby", "Basset House", 55);
+
+        spot.bark = function () {
+            console.log(this.name + " says WOOF!");
+        }
+
+        Dog.prototype.sitting = false;
+
+        Dog.prototype.sit = function () {
+            if (this.sitting) {
+                console.log(this.name + " is already sitting");
+            } else {
+                this.sitting = true;
+                console.log(this.name + " is now sitting");
+            }
+        };
+
+
+        
+
+        function ShowDog(name, breed, weight, handler) {
+            this.name = name;
+            this.breed = breed;
+            this.weight = weight;
+            this.handler = handler;
+        }
+
+        ShowDog.prototype = new Dog();
+
+        ShowDog.prototype.league = "Webville";
+
+        ShowDog.prototype.stack = function () {
+            console.log("Stack");
+        };
+
+        ShowDog.prototype.bait = function () {
+            console.log("Bait");
+        };
+
+        ShowDog.prototype.gait = function (kind) {
+            console.log(kind + "ing");
+        };
+
+        ShowDog.prototype.groom = function () {
+            console.log("Groom");
+        };
+
+        /*************** new constructor stuff, pg. 600 ***************/
+        var fido = new Dog("Fido", "Mixed", 38);
+        if (fido instanceof Dog) {
+            console.log("Fido is a Dog");
+        }
+
+        if (fido instanceof ShowDog) {
+            console.log("Fido is a ShowDog");
+        }
+
+        var scotty = new ShowDog("Scott", "Scottish Terrier", 15, "Cookie");
+        if (scotty instanceof Dog) {
+            console.log("Scotty is a Dog");
+        }
+
+        if (scotty instanceof ShowDog) {
+            console.log("scotty is a ShowDog");
+        }
+        console.log("Fido constructor is " + fido.constructor);
+        console.log("Scotty constructor is " + scotty.constructor);
+
+        /*************** new constructor stuff, pg. 600 ***************/
+
+
+
+
+        /*********************
+
+// re-inserted existing robot code from below  for benefit of spacerobit//
         Robot.prototype.speak = function () {
             console.log("Beep-beep: bender-is-great!");
         };
@@ -36,7 +145,7 @@
             this.errorMessage = "I appear to have a short circuit!";
         };
 
-        /*************** Space robot code, pg. 599 ***************/
+        ///*************** Space robot code, pg. 599 ***************
         function SpaceRobot(name, year, owner, homeplanet) {
             this.name = name;
             this.year = year;
@@ -64,7 +173,7 @@
         simon.blinkLights();
         simon.speak();
 
-        /*************** Space robot code, pg. 599 ***************/
+        *************** Space robot code, pg. 599 ***************/
 
         /*************************************************
         var robby = new Robot("Robby", 1956, "Dr. Morbius");
