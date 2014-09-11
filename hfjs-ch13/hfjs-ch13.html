@@ -7,6 +7,36 @@
     <script>
 
 
+        // cliche maker, pg. 610
+        String.prototype.cliche = function () {
+            var cliche = ["lock and load", "touch base", "open the kimono"];
+
+            for (var i = 0; i < cliche.length; i++) {
+                var index = this.indexOf(cliche[i]);
+                if (index >= 0) {
+                    return true;
+                }
+            }
+            return false;
+        };
+
+        var sentences = [
+            "I'll send my car around to pick you up.",
+            "Lets touch base in the morning and see where we are",
+            "We don't want to open the kimono, we just want to inform them."
+        ];
+
+        for (var i = 0; i < sentences.length; i++) {
+            var phrase = sentences[i];
+            if (phrase.cliche()) {
+                console.log("CLICHE ALERT: " + phrase);
+            }
+        }
+
+
+
+
+/**** all the dog show stuff below, final update ****
         // support code for the pg. 600 exercise code.
 
         // constructor
@@ -57,17 +87,19 @@
                 console.log(this.name + " is now sitting");
             }
         };
+        **** all the dog show stuff below, final update ****/
 
-
-        function ShowDog(name, breed, weight, handler) {
+ //       function ShowDog(name, breed, weight, handler) {
             /* 
             from pg. 603
             replacing some redudnant code
             call is a built-in method
             */
-            Dog.call(this, name, breed, weight);
-            this.handler = handler;
-        }
+//            Dog.call(this, name, breed, weight);
+//            this.handler = handler;
+//        }
+
+
 
 /* (old version)
         function ShowDog(name, breed, weight, handler) {
@@ -77,6 +109,7 @@
             this.handler = handler;
         }
 */
+/*************************************
         ShowDog.prototype = new Dog();
         // will work without this below constructor line
         //but is considered "best practice to include it
@@ -101,7 +134,21 @@
             console.log("Groom");
         };
 
-        /*************** new constructor stuff, pg. 600 ***************/
+        var fido = new Dog("Fido", "Mixed", 38);
+        var fluffy = new Dog("Fluffy", "Poodle", 30);
+        var spot = new Dog("Spot", "Chihuahua", 10);
+        var scotty = new ShowDog("Scotty", "Scottish Terrier", 15, "Cookie");
+        var beatrice = new ShowDog("Beatrice", "Pomeranian", 5, "Hamilton");
+
+        fido.bark();
+        fluffy.bark();
+        spot.bark();
+        scotty.bark();
+        beatrice.bark();
+        scotty.gait("Walk");
+        beatrice.groom();
+
+        /*************** new constructor stuff, pg. 600 ***************
         var fido = new Dog("Fido", "Mixed", 38);
         if (fido instanceof Dog) {
             console.log("Fido is a Dog");
@@ -122,7 +169,7 @@
         console.log("Fido constructor is " + fido.constructor);
         console.log("Scotty constructor is " + scotty.constructor);
 
-        /*************** new constructor stuff, pg. 600 ***************/
+        *************** new constructor stuff, pg. 600 ***************/
 
 
 
