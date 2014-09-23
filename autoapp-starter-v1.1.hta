@@ -14,17 +14,36 @@ var WshShell = new ActiveXObject("WScript.Shell");
 //var WshShell = WScript.CreateObject("WScript.Shell");
 // run the first program
 
-document.write("Executing IE...");
+
+
+
+document.write("Executing IE...</br>");
 var strCommand1 = "\"C:\\Program Files (x86)\\Internet Explorer\\iexplore.exe\"";
 WshShell.Run(strCommand1);
 
 //note: wscript.sleep does not work in HTAs
 
+iSleeperTime();
 
 document.write("Executing outlook...");
 
 var strCommand2 = "\"C:\\Program Files (x86)\\Microsoft Office\\Office12\\OUTLOOK.EXE\"";
 WshShell.Run(strCommand2);
+
+function iSleeperTime( iSeconds ) {
+	// create object
+	//var WshShell = new ActiveXObject("WScript.Shell");
+	// variable to hold command string
+	var strCommand;
+	strCommand = "%comspec% /k start /wait ping 127.0.0.1 -n 30";
+	// set the variable
+//	strCommand = "%COMSPEC% /c ping -n " + iSeconds + " 127.0.0.1>nul";
+//	WshShell.Run(strCommand,0,1);
+//	WshShell.Run("%comspec% /k start /wait ping 127.0.0.1 -n 30");
+	WshShell.Run(strCommand);
+//k dir");
+//c ping 127.0.0.1 -n 5");
+}
 
 </script>
 
