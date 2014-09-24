@@ -13,8 +13,9 @@
 var WshShell = new ActiveXObject("WScript.Shell");
 //var WshShell = WScript.CreateObject("WScript.Shell");
 // run the first program
-
-
+function fnFunctionThatReturns() {
+return 0+0;
+};
 
 
 document.write("Executing IE...</br>");
@@ -23,13 +24,21 @@ WshShell.Run(strCommand1);
 
 //note: wscript.sleep does not work in HTAs
 
-iSleeperTime();
+// this doesn't work so commenting it out
+//iSleeperTime();
 
-document.write("Executing outlook...");
+//setInterval( if (1 > 0) {},500);
+//setInterval( function() {if (1 > 0) {} },5000);
+
+setTimeout( fnFunctionThatReturns(),5000);
+
+document.write("Executing outlook...</br>");
 
 var strCommand2 = "\"C:\\Program Files (x86)\\Microsoft Office\\Office12\\OUTLOOK.EXE\"";
 WshShell.Run(strCommand2);
 
+// doesn't work, commenting
+/*
 function iSleeperTime( iSeconds ) {
 	// create object
 	//var WshShell = new ActiveXObject("WScript.Shell");
@@ -44,6 +53,7 @@ function iSleeperTime( iSeconds ) {
 //k dir");
 //c ping 127.0.0.1 -n 5");
 }
+*/
 
 </script>
 
