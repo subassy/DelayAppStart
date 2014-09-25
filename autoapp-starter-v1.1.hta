@@ -10,41 +10,67 @@
   CONTEXTMENU="yes"/>
 
 <script language=JScript>
+    //i think i figured this out:
+    // each time setTimeout is executed a timer is started
+    // so if three setTimeouts are called in a row all three are executed immediately and
+    // are running in tandom witch each other
+    // thus two function calls with 3000 ms each are three seeprate countdown timers
+    // running at once and all three things will execute at the exact same time
+    // MSDN language reference for setTimeout: 
+    //http://msdn.microsoft.com/en-us/library/ie/ms536753(v=vs.85).aspx
+
+    // i was going to try something with setInterval instead and was looking at the sample source
+    // of 
+    //http://samples.msdn.microsoft.com/workshop/samples/author/dhtml/refs/setInterval.htm
+    // when i noted the new Date and getSeconds off the date object and thought maybe
+    // i could use that as a way to calculate how much time to wait
+    // or take the prior number of seconds and add it to the next 
+    //i.e. if IE is 3 seconds and steam is 5 then since both timers start at once 
+    // steam would be "IE's time plus 5 seconds"
+    //not yet sure how to track that.
+
+
+    // global variables
+
 var WshShell = new ActiveXObject("WScript.Shell");
-//var WshShell = WScript.CreateObject("WScript.Shell");
-// run the first program
+
+var sIEPath = "\"C:\\Program Files (x86)\\Internet Explorer\\iexplore.exe\"";
+var sSteamPath = "\"P:\\Program Files (x86)\\Steam\\Steam.exe\""
+
+setTimeout('alert("app path is " + sIEPath)', 3000);
+setTimeout('var i = function (){ return 0}', 3000);
+setTimeout('alert("app path is " + sSteamPath)', 3000);
+
+//setTimeout('WshShell.Run(sIEPath)', 3000);
+
+
+function fnRunApps(sAppPath, numSeconds) {
 
 
 
 
 
+   // var runApp = function () { WshShell.Run(sAppPath); }
+
+   // setTimeout(runApp, numSeconds);
+    //alert(sAppPath);
+    //setTimeout("WshShell.Run(sAppPath)", 3000);
+    setTimeout('alert("app path is " + sAppPath + " and seconds is " + numSeconds)', numSeconds);
+//    alert("app path is " + sAppPath + " and seconds is " + numSeconds);
+    //alert("Ran through loop for " + sAppPath + " ");
+
+}
 
 
+    // this is copy/pasted from MS sample page for timeout, 
+    //note the enclosing/escaped quotes
+    //window.setTimeout("alert(\"Hello, world\")", 5000);
+
+//fnRunApps(sIEPath, 5000);
+//fnRunApps(sSteamPath, 10000);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    /*
 document.write("Executing application list...</br>");
 
 var iRunIE = function () {
@@ -53,17 +79,12 @@ var iRunIE = function () {
     var strCommand1 = "\"C:\\Program Files (x86)\\Internet Explorer\\iexplore.exe\"";
     WshShell.Run(strCommand1);
 };
-
-
 var RunSteam = function () {
     document.write("Executing Steam...</br>");
 
     var strCommand2 = "\"P:\\Program Files (x86)\\Steam\\Steam.exe\""
     WshShell.Run(strCommand2);
 };
-
-
-
 var RunAppsArr = [ iRunIE, RunSteam];
 
 //var i = 0;
@@ -75,9 +96,7 @@ for (var i = 0; i < RunAppsArr.length; i++) {
     //clearInterval();
 }
 
-
-
-
+    */
     /*
 while (i < RunAppsArr.length) {
     setInterval(RunAppsArr[i], 5000);
@@ -87,14 +106,8 @@ while (i < RunAppsArr.length) {
     }
 }
     */
-
 //setTimeout(RunSteam, 5000);
-
-
 //setTimeout(iRunIE, 5000);
-
-
-
 //note: wscript.sleep does not work in HTAs
 
 // this doesn't work so commenting it out
@@ -116,18 +129,7 @@ while (i < RunAppsArr.length) {
 // doesn't work, commenting
 /*
 function iSleeperTime( iSeconds ) {
-	// create object
-	//var WshShell = new ActiveXObject("WScript.Shell");
-	// variable to hold command string
-	var strCommand;
-	strCommand = "%comspec% /k start /wait ping 127.0.0.1 -n 30";
-	// set the variable
-//	strCommand = "%COMSPEC% /c ping -n " + iSeconds + " 127.0.0.1>nul";
-//	WshShell.Run(strCommand,0,1);
-//	WshShell.Run("%comspec% /k start /wait ping 127.0.0.1 -n 30");
-	WshShell.Run(strCommand);
-//k dir");
-//c ping 127.0.0.1 -n 5");
+
 }
 */ 
 
@@ -135,5 +137,9 @@ function iSleeperTime( iSeconds ) {
 
 
 </head>
+
+
+    <div id="output"></div>
+
 
 </html>
