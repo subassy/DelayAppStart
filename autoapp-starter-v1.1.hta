@@ -15,9 +15,37 @@ var WshShell = new ActiveXObject("WScript.Shell");
 // run the first program
 
 
-document.write("Executing application list...</br>");
 
-    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+document.write("Executing application list...</br>");
 
 var iRunIE = function () {
     document.write("Executing IE...</br>");
@@ -26,7 +54,6 @@ var iRunIE = function () {
     WshShell.Run(strCommand1);
 };
 
-    
 
 var RunSteam = function () {
     document.write("Executing Steam...</br>");
@@ -36,10 +63,35 @@ var RunSteam = function () {
 };
 
 
-setTimeout(RunSteam, 5000);
+
+var RunAppsArr = [ iRunIE, RunSteam];
+
+//var i = 0;
+
+for (var i = 0; i < RunAppsArr.length; i++) {
+    //setInterval(RunAppsArr[i], 1000);
+    setTimeout(RunAppsArr[i], 1000);
+    alert("Ran the thing at array element " + RunAppsArr[i]);
+    //clearInterval();
+}
 
 
-setTimeout(iRunIE, 5000);
+
+
+    /*
+while (i < RunAppsArr.length) {
+    setInterval(RunAppsArr[i], 5000);
+    i++;
+    if (i === (RunAppsArr.length - 1)) {
+        clearInterval
+    }
+}
+    */
+
+//setTimeout(RunSteam, 5000);
+
+
+//setTimeout(iRunIE, 5000);
 
 
 
