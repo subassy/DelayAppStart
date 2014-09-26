@@ -37,15 +37,147 @@ var WshShell = new ActiveXObject("WScript.Shell");
 var sIEPath = "\"C:\\Program Files (x86)\\Internet Explorer\\iexplore.exe\"";
 var sSteamPath = "\"P:\\Program Files (x86)\\Steam\\Steam.exe\""
 
-setTimeout('alert("app path is " + sIEPath)', 3000);
-setTimeout('var i = function (){ return 0}', 3000);
-setTimeout('alert("app path is " + sSteamPath)', 3000);
+var oInterval = "";
+
+
+function fnPauseTimeABit() {
+    if (oInterval == "") {
+        oTimer.innerHTML = "Interval Stopped";
+        window.clearInterval(oInterval);
+    } else {
+        fnStopInterval();
+    }
+}
+
+
+
+function fnRecycle() {
+    var oDate = new Date();
+    var sSwitch = "am";
+    var iHours = oDate.getHours();
+    if (iHours > 12) {
+        iHours -= 12;
+        sSwitch = "pm";
+    }
+    var sMinutes = oDate.getMinutes() + "";
+    if (sMinutes.length == 1) {
+        sMinutes = "0" + sMinutes;
+    }
+    var sSeconds = oDate.getSeconds() + "";
+    if (sSeconds.length == 1) {
+        sSeconds = "0" + sSeconds;
+    }
+    oTimer.innerHTML = iHours + ":" + sMinutes + ":" + sSeconds + " " + sSwitch;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+function fnStopInterval() {
+    if (oInterval != "") {
+        window.clearInterval(oInterval);
+        oInterval = "";
+        oTimer.innerHTML = "Interval Stopped";
+    }
+}
+
+
+
+
+
+
+
+/* ************************************************************************************** */
+
+var oInterval = "";
+
+function fnStartInterval() {
+    if (oInterval == "") {
+        oTimer.innerHTML = "Interval Started";
+        oInterval = window.setInterval("fnRecycle()", 1000);
+    }
+    else {
+        fnStopInterval();
+    }
+}
+
+function fnStopInterval() {
+    if (oInterval != "") {
+        window.clearInterval(oInterval);
+        oInterval = "";
+        oTimer.innerHTML = "Interval Stopped";
+    }
+}
+
+function fnRecycle() {
+    var oDate = new Date();
+    var sSwitch = "am";
+    var iHours = oDate.getHours();
+    if (iHours > 12) {
+        iHours -= 12;
+        sSwitch = "pm";
+    }
+    var sMinutes = oDate.getMinutes() + "";
+    if (sMinutes.length == 1) {
+        sMinutes = "0" + sMinutes;
+    }
+    var sSeconds = oDate.getSeconds() + "";
+    if (sSeconds.length == 1) {
+        sSeconds = "0" + sSeconds;
+    }
+    oTimer.innerHTML = iHours + ":" + sMinutes + ":" + sSeconds + " " + sSwitch;
+}
+
+//setTimeout('alert("app path is " + sIEPath)', 3000);
+//setTimeout('var i = function (){ return 0}', 3000);
+//setTimeout('alert("app path is " + sSteamPath)', 3000);
 
 //setTimeout('WshShell.Run(sIEPath)', 3000);
 
+//var iseconds = 0;
 
-function fnRunApps(sAppPath, numSeconds) {
+//var oNowTime = new Date();
 
+//var iCurrentSec = oNowTime.getSeconds();
+
+//alert('the value is ' + iCurrentSec );
+
+//var iFutureTime = iCurrentSec + 10;
+//alert("futuretime is " + iFutureTime);
+
+//for (var iCurrentSec = oNowTime.getSeconds(); i < 10; i++) {
+//    alert("futuretime is " + iFutureTime);
+//}
+
+//var iWhileSec = iCurrentSec + 10;
+    /*
+alert("outside while loop, whilesec is " + iWhileSec);
+
+
+for (var i = 0; i < 10; i++) {
+
+}
+
+*/
+
+/*
+while ( iCurrentSec <  iWhileSec) {
+    alert("inside while loop, value of iWhileSec is " + iWhileSec);
+     iWhileSec = oNowTime.getSeconds();
+}
+*/
+
+
+//function fnRunApps(sAppPath, numSeconds) {
 
 
 
@@ -55,11 +187,11 @@ function fnRunApps(sAppPath, numSeconds) {
    // setTimeout(runApp, numSeconds);
     //alert(sAppPath);
     //setTimeout("WshShell.Run(sAppPath)", 3000);
-    setTimeout('alert("app path is " + sAppPath + " and seconds is " + numSeconds)', numSeconds);
+//    setTimeout('alert("app path is " + sAppPath + " and seconds is " + numSeconds)', numSeconds);
 //    alert("app path is " + sAppPath + " and seconds is " + numSeconds);
     //alert("Ran through loop for " + sAppPath + " ");
 
-}
+//}
 
 
     // this is copy/pasted from MS sample page for timeout, 
@@ -139,7 +271,18 @@ function iSleeperTime( iSeconds ) {
 </head>
 
 
-    <div id="output"></div>
+    <div class="body">
+	<h1>setInterval Method Sample</h1>
+
+	<span id="oTimer" style="font-size: 16pt; font-weight: bold; font-family: Times; color: #0000FF;">
+	Interval Stopped</span>
+	<p><input type="button" value="Start Interval" onclick="fnStartInterval()">
+	<input type="button" value="Stop Interval" onclick="fnStopInterval()">
+	<!-- START_PAGE_FOOTER --><br>
+	<br>
+	<br>
+	</p>
+    </div>
 
 
 </html>
