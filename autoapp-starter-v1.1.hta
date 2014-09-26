@@ -32,23 +32,114 @@
 
     // global variables
 
-var WshShell = new ActiveXObject("WScript.Shell");
+//var WshShell = new ActiveXObject("WScript.Shell");
 
-var sIEPath = "\"C:\\Program Files (x86)\\Internet Explorer\\iexplore.exe\"";
-var sSteamPath = "\"P:\\Program Files (x86)\\Steam\\Steam.exe\""
-
-var oInterval = "";
+///var sIEPath = "\"C:\\Program Files (x86)\\Internet Explorer\\iexplore.exe\"";
+//var sSteamPath = "\"P:\\Program Files (x86)\\Steam\\Steam.exe\"";
 
 
+/*
 function fnPauseTimeABit() {
     if (oInterval == "") {
-        oTimer.innerHTML = "Interval Stopped";
-        window.clearInterval(oInterval);
+        oTimer.innerHTML = "Interval Started";
+        oInterval = window.setInterval("fnRecycle()", 5000);
     } else {
         fnStopInterval();
     }
 }
+*/
 
+
+    /*
+var sWriteToInner = function () {
+    if (oInterval == "") {
+        oTimer.innerHTML += "</br>alert 1 or whatever</br>";
+        oInterval = false;
+
+    } else {
+        oInterval = window.clearInterval(oInterval);
+    }
+}
+
+*/
+    /*
+    var oInterval = true;
+
+    function fnGenericDisplay() {
+        oTimer.innerHTML += "</br>Hello pass 1</br>";
+      //  oTimer.innerHTML = "</br>Hello pass 1</br>";
+
+    }
+
+function fnPauseTimeABit() {
+    var fnPlacerHolder = function () {
+        //return alert("Times up");
+        oInterval = false;
+        return oInterval;
+    }
+    //oInterval = window.setInterval(fnPlacerHolder, 5000);
+    window.setTimeout(fnPlacerHolder, 5000);
+   // alert(oInterval);
+    // oInterval = "";
+    
+    if (fnPlacerHolder) {
+      //  window.clearInterval(oInterval);
+        alert(oInterval);
+    } else {
+        alert("time is up");
+    }
+ //   return;
+    
+}
+
+    */
+    var WshShell = new ActiveXObject("WScript.Shell");
+    var sIEPath = "\"C:\\Program Files (x86)\\Internet Explorer\\iexplore.exe\"";
+    var sSteamPath = "\"P:\\Program Files (x86)\\Steam\\Steam.exe\"";
+
+
+    iTracker = true;
+    function fnRunExe(sStringtoExe, iNumSec) {
+        
+
+        function fnInnerFunction() {
+            var fnRunTheThing = function () {
+                // WshShell.run(sIEPath);
+                oTimer.innerHTML += "</br>Running IE</br>";
+                oTimer.innerHTML += sStringtoExe + "</br>";
+
+                iTracker = true;
+            }
+            window.setTimeout(fnRunTheThing, (iNumSec * 1000));
+         //   oTimer.innerHTML = "";
+                iTracker = false;
+            }
+
+            if (iTracker) {
+                fnInnerFunction();
+            }
+
+        //iTracker = false;
+    }
+
+    //fnRunExe(sIEPath, 5);
+    fnRunExe(sSteamPath, 10);
+
+
+//function fnDisplaySome() {
+  //  fnGenericDisplay();
+//    fnPauseTimeABit();
+  //  fnGenericDisplay();
+//}
+
+    /*
+function fnStopInterval() {
+    if (oInterval != "") {
+        window.clearInterval(oInterval);
+        oInterval = "";
+        oTimer.innerHTML = "Interval Stopped";
+    }
+}
 
 
 function fnRecycle() {
@@ -72,32 +163,14 @@ function fnRecycle() {
 
 
 
-
-
-
-
-
-
-
-
-
-
-function fnStopInterval() {
-    if (oInterval != "") {
-        window.clearInterval(oInterval);
-        oInterval = "";
-        oTimer.innerHTML = "Interval Stopped";
-    }
-}
-
-
+*/
 
 
 
 
 
 /* ************************************************************************************** */
-
+    /*
 var oInterval = "";
 
 function fnStartInterval() {
@@ -135,7 +208,10 @@ function fnRecycle() {
         sSeconds = "0" + sSeconds;
     }
     oTimer.innerHTML = iHours + ":" + sMinutes + ":" + sSeconds + " " + sSwitch;
-}
+}    */
+    /* ************************************************************************************** */
+
+
 
 //setTimeout('alert("app path is " + sIEPath)', 3000);
 //setTimeout('var i = function (){ return 0}', 3000);
@@ -276,7 +352,7 @@ function iSleeperTime( iSeconds ) {
 
 	<span id="oTimer" style="font-size: 16pt; font-weight: bold; font-family: Times; color: #0000FF;">
 	Interval Stopped</span>
-	<p><input type="button" value="Start Interval" onclick="fnStartInterval()">
+	<p><input type="button" value="Start Interval" onclick="fnRunExe()">
 	<input type="button" value="Stop Interval" onclick="fnStopInterval()">
 	<!-- START_PAGE_FOOTER --><br>
 	<br>
