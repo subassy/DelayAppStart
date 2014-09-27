@@ -114,6 +114,12 @@ function fnPauseTimeABit() {
 
     var arAppPaths = [0, sSteamPath, sIEPath];
 
+    // maybe two arrays: one for the app paths, the other for number of seconds
+    // then increment through both at the same time
+    // each element associated with the other
+    //e.g. arappapaths[1] the same as the secondstracker[1] element?
+
+
   //  for (var i = 0; i < arAppPaths.length; i++) {
  //       alert("value of app paths array element is " + arAppPaths[i] + " and length is " + arAppPaths.length);
  //   }
@@ -124,8 +130,8 @@ function fnPauseTimeABit() {
         if (iNumSec < 10) {
             var iConverSeconds = iNumSec * 1000;
         }
-      //  var sSecondsApp1 = iConverSeconds;
-        //  var sSecondsApp2 = sSecondsApp1 + 4000;
+    //  var sSecondsApp1 = iConverSeconds;
+    //  var sSecondsApp2 = sSecondsApp1 + 4000;
 
 
 
@@ -133,21 +139,23 @@ function fnPauseTimeABit() {
 
             if (iTime < arAppPaths.length) {
                 alert("Value of itime is " + iTime);
-                for (var i = 1; i < arAppPaths.length; i++) {
+                //  for (var i = 1; i < arAppPaths.length; i++) {
+                var i = iTime;
                     oTimer.innerHTML += "</br>Just ran: </br>" + arAppPaths[i];
-                }
+              //  }
             }
             
         }
         var iTime = setTimeout(fnRunIt, iConverSeconds);
+       // alert("value of timeout.value is " + iTime.valueOf);
         
     }
 
-    var numTimes = setTimeout("alert('hello')", 3000);
-    alert("value of numtimes is " + numTimes);
+   // var numTimes = setTimeout("alert('hello')", 3000);
+   // alert("value of numtimes is " + numTimes);
 
   //  fnRunExe(arAppPaths, 5);
-   // fnRunExe(arAppPaths, 2);
+    fnRunExe(arAppPaths, 2);
 
 
     //fnRunExe(sIEPath, 5);
