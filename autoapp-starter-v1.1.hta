@@ -36,7 +36,20 @@
 
 ///var sIEPath = "\"C:\\Program Files (x86)\\Internet Explorer\\iexplore.exe\"";
 //var sSteamPath = "\"P:\\Program Files (x86)\\Steam\\Steam.exe\"";
+    /*
+    function fnStartInterval() {
+        var fnTrueFalse = function () {
+            alert(iVarTImer);
+        }
 
+        
+        var iVarTImer = setTimeout(function fnPlacHolder(){  } , 5000);
+
+       //    if (iVarTImer == 5) {
+               
+      //     }
+    }
+    */
 
 /*
 function fnPauseTimeABit() {
@@ -93,38 +106,53 @@ function fnPauseTimeABit() {
 }
 
     */
+
+    
     var WshShell = new ActiveXObject("WScript.Shell");
     var sIEPath = "\"C:\\Program Files (x86)\\Internet Explorer\\iexplore.exe\"";
     var sSteamPath = "\"P:\\Program Files (x86)\\Steam\\Steam.exe\"";
 
+    var arAppPaths = [0, sSteamPath, sIEPath];
 
-    iTracker = true;
-    function fnRunExe(sStringtoExe, iNumSec) {
+  //  for (var i = 0; i < arAppPaths.length; i++) {
+ //       alert("value of app paths array element is " + arAppPaths[i] + " and length is " + arAppPaths.length);
+ //   }
+
+
+    function fnRunExe(arAppPaths, iNumSec) {
+        // alert(arAppPaths[0]);
+        if (iNumSec < 10) {
+            var iConverSeconds = iNumSec * 1000;
+        }
+      //  var sSecondsApp1 = iConverSeconds;
+        //  var sSecondsApp2 = sSecondsApp1 + 4000;
+
+
+
+        var fnRunIt = function () {
+
+            if (iTime < arAppPaths.length) {
+                alert("Value of itime is " + iTime);
+                for (var i = 1; i < arAppPaths.length; i++) {
+                    oTimer.innerHTML += "</br>Just ran: </br>" + arAppPaths[i];
+                }
+            }
+            
+        }
+        var iTime = setTimeout(fnRunIt, iConverSeconds);
         
-
-        function fnInnerFunction() {
-            var fnRunTheThing = function () {
-                // WshShell.run(sIEPath);
-                oTimer.innerHTML += "</br>Running IE</br>";
-                oTimer.innerHTML += sStringtoExe + "</br>";
-
-                iTracker = true;
-            }
-            window.setTimeout(fnRunTheThing, (iNumSec * 1000));
-         //   oTimer.innerHTML = "";
-                iTracker = false;
-            }
-
-            if (iTracker) {
-                fnInnerFunction();
-            }
-
-        //iTracker = false;
     }
 
-    //fnRunExe(sIEPath, 5);
-    fnRunExe(sSteamPath, 10);
+    var numTimes = setTimeout("alert('hello')", 3000);
+    alert("value of numtimes is " + numTimes);
 
+  //  fnRunExe(arAppPaths, 5);
+   // fnRunExe(arAppPaths, 2);
+
+
+    //fnRunExe(sIEPath, 5);
+   // fnRunExe(sSteamPath, 10);
+    
 
 //function fnDisplaySome() {
   //  fnGenericDisplay();
@@ -140,8 +168,8 @@ function fnStopInterval() {
         oTimer.innerHTML = "Interval Stopped";
     }
 }
-
-
+    */
+    /*
 function fnRecycle() {
     var oDate = new Date();
     var sSwitch = "am";
@@ -162,15 +190,15 @@ function fnRecycle() {
 }
 
 
+    
+    */
 
-*/
+    
 
 
+    /* ************************************************************************************** 
 
-
-
-/* ************************************************************************************** */
-    /*
+    
 var oInterval = "";
 
 function fnStartInterval() {
@@ -208,8 +236,9 @@ function fnRecycle() {
         sSeconds = "0" + sSeconds;
     }
     oTimer.innerHTML = iHours + ":" + sMinutes + ":" + sSeconds + " " + sSwitch;
-}    */
-    /* ************************************************************************************** */
+}
+    
+     ************************************************************************************** */
 
 
 
@@ -352,13 +381,14 @@ function iSleeperTime( iSeconds ) {
 
 	<span id="oTimer" style="font-size: 16pt; font-weight: bold; font-family: Times; color: #0000FF;">
 	Interval Stopped</span>
-	<p><input type="button" value="Start Interval" onclick="fnRunExe()">
-	<input type="button" value="Stop Interval" onclick="fnStopInterval()">
+	<p><input type="button" value="Start Interval" onclick="fnStartInterval()">
+	<input type="button" value="Run Exe" onclick="fnRunExe(sIEPath,4)">
 	<!-- START_PAGE_FOOTER --><br>
 	<br>
 	<br>
 	</p>
-    </div>
+    </div>
+
 
 
 </html>
