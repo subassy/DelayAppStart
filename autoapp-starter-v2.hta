@@ -106,37 +106,28 @@ function fnPauseTimeABit() {
 }
 
     */
-
-    
     var WshShell = new ActiveXObject("WScript.Shell");
     var sIEPath = "\"C:\\Program Files (x86)\\Internet Explorer\\iexplore.exe\"";
     var sSteamPath = "\"P:\\Program Files (x86)\\Steam\\Steam.exe\"";
 
     var arAppPaths = [0, sSteamPath, sIEPath];
+    var arAppTimes = [0, 3, 7];
 
     // maybe two arrays: one for the app paths, the other for number of seconds
     // then increment through both at the same time
     // each element associated with the other
     //e.g. arappapaths[1] the same as the secondstracker[1] element?
-
-
   //  for (var i = 0; i < arAppPaths.length; i++) {
  //       alert("value of app paths array element is " + arAppPaths[i] + " and length is " + arAppPaths.length);
  //   }
-
-
-    function fnRunExe(arAppPaths, iNumSec) {
         // alert(arAppPaths[0]);
-        if (iNumSec < 10) {
-            var iConverSeconds = iNumSec * 1000;
-        }
+    function fnRunExe(arAppPaths, iNumSec) {
+//        if (iNumSec < 60) {
+//            var iConverSeconds = iNumSec * 1000;
+//        }
     //  var sSecondsApp1 = iConverSeconds;
     //  var sSecondsApp2 = sSecondsApp1 + 4000;
-
-
-
         var fnRunIt = function () {
-
             if (iTime < arAppPaths.length) {
                 alert("Value of itime is " + iTime);
                 //  for (var i = 1; i < arAppPaths.length; i++) {
@@ -144,24 +135,35 @@ function fnPauseTimeABit() {
                     oTimer.innerHTML += "</br>Just ran: </br>" + arAppPaths[i];
               //  }
             }
-            
         }
-        var iTime = setTimeout(fnRunIt, iConverSeconds);
-       // alert("value of timeout.value is " + iTime.valueOf);
-        
-    }
 
+//
+//for (var j = 1; j < arAppTimes.length; j++) {  
+//	iConvertSeconds = arAppTimes[iTime] * 1000;
+	var iTime = setTimeout(fnRunIt, iNumSec );
+
+       // alert("value of timeout.value is " + iTime.valueOf);
+  //  }
+}
    // var numTimes = setTimeout("alert('hello')", 3000);
    // alert("value of numtimes is " + numTimes);
-
   //  fnRunExe(arAppPaths, 5);
-    fnRunExe(arAppPaths, 2);
 
+        var iConvertSeconds;
+	var iTotalTime = 0;
+	
+	for (var j = 0; j < arAppTimes.length; j++) {
+		iTotalTime += arAppTimes[j];
+	}
+	alert("value of iTotalTime is " + iTotalTime);
 
+for (var i = 1; i < arAppPaths.length; i++){
+	iConvertSeconds = arAppTimes[i] * 1000;
+//	alert("Value of arAppTimes[i] is " + iConvertSeconds);
+    fnRunExe(arAppPaths, iConvertSeconds );
+}
     //fnRunExe(sIEPath, 5);
    // fnRunExe(sSteamPath, 10);
-    
-
 //function fnDisplaySome() {
   //  fnGenericDisplay();
 //    fnPauseTimeABit();
