@@ -10,6 +10,7 @@
   CONTEXTMENU="yes"/>
 
 <script language=JScript>
+//last update: 27 september 2014 @ 8:57pm
     //i think i figured this out:
     // each time setTimeout is executed a timer is started
     // so if three setTimeouts are called in a row all three are executed immediately and
@@ -106,12 +107,6 @@ function fnPauseTimeABit() {
 }
 
     */
-    var WshShell = new ActiveXObject("WScript.Shell");
-    var sIEPath = "\"C:\\Program Files (x86)\\Internet Explorer\\iexplore.exe\"";
-    var sSteamPath = "\"P:\\Program Files (x86)\\Steam\\Steam.exe\"";
-
-    var arAppPaths = [0, sSteamPath, sIEPath];
-    var arAppTimes = [0, 3, 7];
 
     // maybe two arrays: one for the app paths, the other for number of seconds
     // then increment through both at the same time
@@ -121,47 +116,80 @@ function fnPauseTimeABit() {
  //       alert("value of app paths array element is " + arAppPaths[i] + " and length is " + arAppPaths.length);
  //   }
         // alert(arAppPaths[0]);
-    function fnRunExe(arAppPaths, iNumSec) {
 //        if (iNumSec < 60) {
 //            var iConverSeconds = iNumSec * 1000;
 //        }
     //  var sSecondsApp1 = iConverSeconds;
     //  var sSecondsApp2 = sSecondsApp1 + 4000;
-        var fnRunIt = function () {
-            if (iTime < arAppPaths.length) {
-                alert("Value of itime is " + iTime);
                 //  for (var i = 1; i < arAppPaths.length; i++) {
-                var i = iTime;
-                    oTimer.innerHTML += "</br>Just ran: </br>" + arAppPaths[i];
               //  }
-            }
-        }
 
 //
 //for (var j = 1; j < arAppTimes.length; j++) {  
 //	iConvertSeconds = arAppTimes[iTime] * 1000;
-	var iTime = setTimeout(fnRunIt, iNumSec );
-
        // alert("value of timeout.value is " + iTime.valueOf);
   //  }
-}
+//}
    // var numTimes = setTimeout("alert('hello')", 3000);
    // alert("value of numtimes is " + numTimes);
   //  fnRunExe(arAppPaths, 5);
+//        var iConvertSeconds;
 
-        var iConvertSeconds;
-	var iTotalTime = 0;
-	
+    var WshShell = new ActiveXObject("WScript.Shell");
+    var sIEPath = "\"C:\\Program Files (x86)\\Internet Explorer\\iexplore.exe\"";
+    var sSteamPath = "\"P:\\Program Files (x86)\\Steam\\Steam.exe\"";
+    var arAppPaths = [0, sSteamPath, sIEPath];
+    var arAppTimes = [0, 3, 7];
+//    var iTime;
+
+    function fnRunExe(arAppPaths, iNumSec, iCounter) {
+	alert("Inside fnRunExe, the value of iCounter is " + iCounter);
+        var fnRunIt = function () {
+            if (iTime < arAppPaths.length) {
+                alert("Value of itime is " + iTime);
+
+                var i = iTime;
+                    oTimer.innerHTML += "</br>Just ran: </br>" + arAppPaths[i] + " with number of seconds " + iNumSec 
+				+ "</br> also, counter is " + iCounter;
+
+            }
+        }
+	var iCalSec = 1;
+//	if (iTime > 1) {
+//		iNumSec += arAppTimes[1] * 1000;
+//	}
+
+	if (iCounter > 1) {
+		iTemp = arAppTimes[iCounter];
+		iNumSec = iConvertSeconds((arAppTimes.length - 1) + iTemp);
+		alert("value of inumsec after iCounter greater than 1 calculation is " + iNumSec);
+	}
+
+
+	var iTime = setTimeout(fnRunIt, iNumSec );
+}
+
+	function iConvertSeconds(i) {
+		alert("value of i in the iConvertSeconds function is " + (i * 1000));
+		return i * 1000;
+	}
+
+/*
 	for (var j = 0; j < arAppTimes.length; j++) {
 		iTotalTime += arAppTimes[j];
 	}
-	alert("value of iTotalTime is " + iTotalTime);
+*/
 
-for (var i = 1; i < arAppPaths.length; i++){
-	iConvertSeconds = arAppTimes[i] * 1000;
-//	alert("Value of arAppTimes[i] is " + iConvertSeconds);
-    fnRunExe(arAppPaths, iConvertSeconds );
+//	alert("value of iTotalTime is " + iTotalTime);
+for (var i = 1; i < arAppPaths.length; i++) {
+
+    fnRunExe(arAppPaths, iConvertSeconds(arAppTimes[i]), i );
 }
+
+//	iConvertSeconds = arAppTimes[i] * 1000;
+
+//	alert("Value of arAppTimes[i] is " + iConvertSeconds);
+
     //fnRunExe(sIEPath, 5);
    // fnRunExe(sSteamPath, 10);
 //function fnDisplaySome() {
