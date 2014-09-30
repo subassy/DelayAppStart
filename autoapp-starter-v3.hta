@@ -17,24 +17,18 @@
 
     var arAppPaths = [0, 	sSteamPath, sIEPath, sExplorerPath];
     var arAppTimes = [0, 	3, 		4, 		5];
-
     function fnRunExe(arAppPaths, iNumSec, iCounter) {
 	alert("Inside fnRunExe, the value of iCounter is " + iCounter + " and the value of iNumSec is " + iNumSec);
         var fnRunIt = function () {
             if (iTime < arAppPaths.length) {
-  //              alert("Value of itime is " + iTime);
-
-  //              var i = iTime;
                     oTimer.innerHTML += "</br>Just ran: </br>" + arAppPaths[iCounter] + " with number of seconds " + iNumSec 
 			+ "</br> also, counter is " + iCounter;
-
             }
         }
 	var iCalSec = 1;
 //	if (iTime > 1) {
 //		iNumSec += arAppTimes[1] * 1000;
 //	}
-
 	if (iCounter > 1) {
 //		iTemp = arAppTimes[iCounter]  + (arAppTimes.length - 1);
 //		iNumSec = iConvertSeconds((arAppTimes.length - 1) + iTemp);
@@ -45,23 +39,38 @@
 		}
 		iNumSec = iTemp;
 	}
-
-
 	var iTime = setTimeout(fnRunIt, iNumSec );
-
 }
-
 	function iConvertSeconds(i) {
 //		alert("value of i in the iConvertSeconds function is " + (i * 1000));
 		if (i < 60) {
 			return i * 1000;
 		}
 	}
+////	var iSumTotal = 0;
+	var iKeepTrack = 1;
+	for (var i = arAppPaths.length - 1; i  > 0; i--) {
+		alert("iKeepTrack is " + iKeepTrack);
+		alert("the value of i is " + i);
+		alert("the value of arAppTimes[i] is " + arAppTimes[i]);
 
 
-	for (var i = 1; i < arAppPaths.length; i++) {
-	    fnRunExe(arAppPaths, iConvertSeconds(arAppTimes[i]), i );
+
+//		found below on http://stackoverflow.com/questions/1230233/how-to-go-through-an-array-and-add-their-values
+//		for (var k = 0, iSumTotal = 0; k < arAppPaths.length; iSumTotal += arAppTimes[k++] );
+
+			//iSumTotal =
+//				iSumTotal = iSumTotal + arAppTimes[i] + arAppTimes[k]; // + arAppTimes[k-1]);
+				alert("value of iSumTotal is " + iSumTotal );
+//			}
+//		alert("value of iSumTotal is " + iSumTotal );
+//		iKeepTrack++;
 	}
+//	for (var i = 1; i < arAppPaths.length; i++) {
+//	    fnRunExe(arAppPaths, iConvertSeconds(arAppTimes[i]), i );
+//	}
+
+
 </script>
 
 
