@@ -138,19 +138,20 @@ function fnPauseTimeABit() {
     var WshShell = new ActiveXObject("WScript.Shell");
     var sIEPath = "\"C:\\Program Files (x86)\\Internet Explorer\\iexplore.exe\"";
     var sSteamPath = "\"P:\\Program Files (x86)\\Steam\\Steam.exe\"";
-    var arAppPaths = [0, sSteamPath, sIEPath];
-    var arAppTimes = [0, 3, 7];
-//    var iTime;
+    var sExplorerPath = "\"c:\\Windows\\explorer.exe\""
+
+    var arAppPaths = [0, 	sSteamPath, sIEPath, sExplorerPath];
+    var arAppTimes = [0, 	3, 		4, 		5];
 
     function fnRunExe(arAppPaths, iNumSec, iCounter) {
-	alert("Inside fnRunExe, the value of iCounter is " + iCounter);
+	alert("Inside fnRunExe, the value of iCounter is " + iCounter + " and the value of iNumSec is " + iNumSec);
         var fnRunIt = function () {
             if (iTime < arAppPaths.length) {
-                alert("Value of itime is " + iTime);
+  //              alert("Value of itime is " + iTime);
 
-                var i = iTime;
-                    oTimer.innerHTML += "</br>Just ran: </br>" + arAppPaths[i] + " with number of seconds " + iNumSec 
-				+ "</br> also, counter is " + iCounter;
+  //              var i = iTime;
+                    oTimer.innerHTML += "</br>Just ran: </br>" + arAppPaths[iCounter] + " with number of seconds " + iNumSec 
+			+ "</br> also, counter is " + iCounter;
 
             }
         }
@@ -160,18 +161,26 @@ function fnPauseTimeABit() {
 //	}
 
 	if (iCounter > 1) {
-		iTemp = arAppTimes[iCounter];
-		iNumSec = iConvertSeconds((arAppTimes.length - 1) + iTemp);
-		alert("value of inumsec after iCounter greater than 1 calculation is " + iNumSec);
+//		iTemp = arAppTimes[iCounter]  + (arAppTimes.length - 1);
+//		iNumSec = iConvertSeconds((arAppTimes.length - 1) + iTemp);
+//		alert("value of inumsec after iCounter greater than 1 calculation is " + iNumSec);
+		var iTemp;
+		for (j = arAppTimes[iCounter]; j > 0; j--) {
+			iTemp = arAppTimes[j] += arAppTimes[iCounter];
+		}
+		iNumSec = iTemp;
 	}
 
 
 	var iTime = setTimeout(fnRunIt, iNumSec );
+
 }
 
 	function iConvertSeconds(i) {
-		alert("value of i in the iConvertSeconds function is " + (i * 1000));
-		return i * 1000;
+//		alert("value of i in the iConvertSeconds function is " + (i * 1000));
+		if (i < 60) {
+			return i * 1000;
+		}
 	}
 
 
