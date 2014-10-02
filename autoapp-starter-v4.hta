@@ -25,7 +25,7 @@
                     oTimer.innerHTML += "</br>Just ran: </br>" + arAppPaths[iCounter] + " with number of seconds " + iNumSec 
 			+ "</br> also, counter is " + iCounter;
                     WshShell.run(arAppPaths[iCounter]);
-            }
+            } 
         }
 
 	var iTime = setTimeout(fnRunIt, iNumSec );
