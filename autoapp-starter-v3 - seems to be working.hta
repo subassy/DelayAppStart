@@ -1,0 +1,131 @@
+<html>
+
+<head>
+
+<title>auto-app-starter v3</title>
+
+<HTA:APPLICATION
+  APPLICATIONNAME="Auto-appstarter-v1"
+  VERSION="1"
+  CONTEXTMENU="yes"/>    
+
+<script language=JScript>
+    var WshShell = new ActiveXObject("WScript.Shell");
+    var sIEPath = "\"C:\\Program Files (x86)\\Internet Explorer\\iexplore.exe\"";
+    var sSteamPath = "\"P:\\Program Files (x86)\\Steam\\Steam.exe\"";
+    var sExplorerPath = "\"c:\\Windows\\explorer.exe\""
+
+    var arAppPaths = [0, 	sSteamPath, sIEPath, sExplorerPath];
+    var arAppTimes = [0, 	3, 		4, 		5];
+    function fnRunExe(arAppPaths, iNumSec, iCounter) {
+	alert("Inside fnRunExe, the value of iCounter is " + iCounter + " and the value of iNumSec is " + iNumSec);
+        var fnRunIt = function () {
+            if (iTime < arAppPaths.length) {
+                    oTimer.innerHTML += "</br>Just ran: </br>" + arAppPaths[iCounter] + " with number of seconds " + iNumSec 
+			+ "</br> also, counter is " + iCounter;
+            }
+        }
+	var iCalSec = 1;
+//	if (iTime > 1) {
+//		iNumSec += arAppTimes[1] * 1000;
+//	}
+	if (iCounter > 1) {
+//		iTemp = arAppTimes[iCounter]  + (arAppTimes.length - 1);
+//		iNumSec = iConvertSeconds((arAppTimes.length - 1) + iTemp);
+//		alert("value of inumsec after iCounter greater than 1 calculation is " + iNumSec);
+		var iTemp;
+		
+		
+
+		for (j = arAppTimes[iCounter]; j > 0; j--) {
+			iTemp = arAppTimes[j] += arAppTimes[iCounter];
+		}
+		iNumSec = iTemp;
+	}
+	var iTime = setTimeout(fnRunIt, iNumSec );
+}
+
+
+
+
+
+/* *************************************************************** */
+	function iConvertSeconds(i) {
+//		alert("value of i in the iConvertSeconds function is " + (i * 1000));
+		if (i < 60) {
+			return i * 1000;
+		}
+	}
+
+
+
+
+//	var iSumTotal = 0;
+
+/* *************************************************************** */
+// iSumTotal = 0
+
+//	var iKeepTrack = 0;
+	for (var i = 1; i  < arAppTimes.length; i++) {
+		var iKeepTrack = 0;
+		alert("iKeepTrack is " + iKeepTrack);
+		alert("the value of i is " + i);
+		alert("the value of arAppTimes[i] is " + arAppTimes[i]);
+
+// when i use "j < arAppTimes[i]", that value is [2] which is actually the third element, which is 4. so it's saying do the loop 4 times, not 
+//do the loop the remaining times in the th array, which is value of [2] + value of [1]...
+//so it should really be "j < i"
+			for (var j = 1, iSumTotal = 0; j <= i; j++) {  
+				alert("value of arAppTimes[i](inside loop) is " + arAppTimes[i]);
+//				if (j > 0) {
+				iSumTotal += arAppTimes[j];
+				alert("value of iSumTotal (inside loop) is " + iSumTotal );
+//			}
+		}
+		iKeepTrack = iSumTotal;
+		alert("value of iKeepTrack (outside loop) is " + iKeepTrack );
+	}
+/* *************************************************************** */
+
+//				alert("value of iSumTotal is " + iSumTotal );
+
+
+
+//		found below on http://stackoverflow.com/questions/1230233/how-to-go-through-an-array-and-add-their-values
+//		for (var k = 0, iSumTotal = 0; k < arAppPaths.length; iSumTotal += arAppTimes[k++] );
+
+			//iSumTotal =
+//				iSumTotal = iSumTotal + arAppTimes[i] + arAppTimes[k]; // + arAppTimes[k-1]);
+//				alert("value of iSumTotal is " + iSumTotal );
+//			}
+//		alert("value of iSumTotal is " + iSumTotal );
+//		iKeepTrack++;
+//	}
+//	for (var i = 1; i < arAppPaths.length; i++) {
+//	    fnRunExe(arAppPaths, iConvertSeconds(arAppTimes[i]), i );
+//	}
+
+
+</script>
+
+
+</head>
+
+
+    <div class="body">
+	<h1>setInterval Method Sample</h1>
+
+	<span id="oTimer" style="font-size: 16pt; font-weight: bold; font-family: Times; color: #0000FF;">
+	Interval Stopped</span>
+	<p><input type="button" value="Start Interval" onclick="fnStartInterval()">
+	<input type="button" value="Run Exe" onclick="fnRunExe(sIEPath,4)">
+	<!-- START_PAGE_FOOTER --><br>
+	<br>
+	<br>
+	</p>
+    </div>
+
+
+
+</html>
+
