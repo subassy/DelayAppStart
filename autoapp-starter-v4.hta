@@ -42,9 +42,6 @@
 
 	    for (var i = 1; i < arAppTimes.length; i++) {
 	        var iKeepTrack = 0;
-	        // when i use "j < arAppTimes[i]", that value is [2] which is actually the third element, which is 4. so it's saying do the loop 4 times, not 
-	        //do the loop the remaining times in the th array, which is value of [2] + value of [1]...
-	        //so it should really be "j < i"
 	        for (var j = 1, iSumTotal = 0; j <= i; j++) {
 	            iSumTotal += arAppTimes[j];
 	        }
