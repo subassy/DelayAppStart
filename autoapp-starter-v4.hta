@@ -23,19 +23,34 @@
     var sExplorerPath = "\"c:\\Windows\\explorer.exe\""
     var sPutyPortable = "\"S:\\My Dropbox\\PuTTYPortable\\PuTTYPortable.exe\""
 
-    var arAppPaths = [0, sExplorerPath, sIEPath, sSteamPath, sPutyPortable];
-    var arAppTimes = [0,      3,           4,         5,             6    ];
+    /* *************************************************************** */
+   // (don't delete this)
+    // finally eliminated that extra 0 that started out the two arrays 
+    //and it's working
+    // to change it back: and a "0," to both of the below arrays
+    // as the first element
+    // then in the below two for-loops with i and j make the initial value of both
+    // be set to 1 instead of 0
+    // those two chagnes should make it work as before
+
+    //only disadvantage to how it is now is the element counter starts at 0 instead of 1
+    //outside that everything is the same
+
+    /* *************************************************************** */
+    var arAppPaths = [ sExplorerPath, sIEPath, sSteamPath, sPutyPortable];
+    var arAppTimes = [      3,           4,         5,             6    ];
 
     function fnRunExe(arAppPaths, iNumSec, iCounter) {
         var fnRunIt = function () {
-            if (iTime < arAppPaths.length) {
+            //if    (iTime < arAppPaths.length) {
             oTimer.innerHTML += "</br>Just ran: </br>" + arAppPaths[iCounter] + " with number of seconds " + iNumSec 
 			+ "</br> also, counter is " + iCounter;
                     WshShell.run(arAppPaths[iCounter]);
-            } 
+            //} 
         }
 
-	var iTime = setTimeout(fnRunIt, iNumSec );
+        //var iTime =
+            setTimeout(fnRunIt, iNumSec);
 }
 /* *************************************************************** */
 	function iConvertSeconds(i) {
@@ -46,14 +61,12 @@
 /* *************************************************************** */
 
 	function fnForTheCalling() {
-	    for (var i = 1; i < arAppTimes.length; i++) {
+	    for (var i = 0; i < arAppTimes.length; i++) {
 	        var iKeepTrack = 0;
-	        for (var j = 1, iSumTotal = 0; j <= i; j++) {
+	        for (var j = 0, iSumTotal = 0; j <= i; j++) {
 	            iSumTotal += arAppTimes[j];
 	        }
 	        iKeepTrack = iConvertSeconds(iSumTotal);
-
-
 	        fnRunExe(arAppPaths, iKeepTrack, i);
 	    }
 	}
