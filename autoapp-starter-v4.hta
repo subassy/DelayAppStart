@@ -69,6 +69,10 @@
 	        iKeepTrack = iConvertSeconds(iSumTotal);
 	        fnRunExe(arAppPaths, iKeepTrack, i);
 	    }
+	    var xmldoc = new ActiveXObject("MSXML2.DOMDocument.3.0");
+	    xmldoc.loadXML("<root><child></child></root>");
+	    alert(xmldoc.xml);
+	    xmldoc.save();
 	}
 /* *************************************************************** */
 //		found below on http://stackoverflow.com/questions/1230233/how-to-go-through-an-array-and-add-their-values
