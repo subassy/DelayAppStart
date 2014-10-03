@@ -46,9 +46,9 @@
 /* *************************************************************** */
 
 	function fnForTheCalling() {
-	    for (var i = 0; i < arAppTimes.length; i++) {
+	    for (var i = 1; i < arAppTimes.length; i++) {
 	        var iKeepTrack = 0;
-	        for (var j = 0, iSumTotal = 0; j <= i; j++) {
+	        for (var j = 1, iSumTotal = 0; j <= i; j++) {
 	            iSumTotal += arAppTimes[j];
 	        }
 	        iKeepTrack = iConvertSeconds(iSumTotal);
