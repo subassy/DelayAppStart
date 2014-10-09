@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Delayappstart by subassy</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Delayappstart</h1>
+        <p>Intended for use in the &quot;startup&quot; programs group (XP/7), choose list of apps to start on logon and the delay time between each. HTML/JavaScript.</p>
+
+        <p class="view"><a href="https://github.com/subassy/DelayAppStart">View the Project on GitHub <small>subassy/DelayAppStart</small></a></p>
+
+
+        <ul>
+          <li><a href="https://github.com/subassy/DelayAppStart/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/subassy/DelayAppStart/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/subassy/DelayAppStart">View On <strong>GitHub</strong></a></li>
+        </ul>
+      </header>
+      <section>
+        <h2>
+<a name="october-8th-2014" class="anchor" href="#october-8th-2014"><span class="octicon octicon-link"></span></a>October 8th 2014</h2>
+
+<p>In its current state this program has some statically entered application paths that each execute after a specific amount of time in order.</p>
+
+<p>The next stage will include being able to enter in custom paths and specifying some number of seconds between 1 and 59.</p>
+
+<p>The reason for this programs existence was very simple: one of the PCs I use at work is very slow when I first logon and it takes a while for 5 or 6 applications to show up on screen as I click each one off on the task bar. This program simply executes a program, waits some number of seconds then executes the next one, and so on. Very basic functionality that could accomplished with a CMD batch file. I decided to write this as an HTA for multiple reasons including but not limited to: I can use this HTA as a framework for other utilities with similar requirements and I needed practice with HTML/JavaScript anyway.</p>
+
+<p>The program needs at least two modes: the first one is for adding and removing applications from the list, the "editor mode if you will. The second mode is where upon loading the program starts executing without user interaction.</p>
+
+<p>Vision for the "final" version: Specify a path and time out time for any number of applications save changes to a config file (probably XML) Also automatic placement of a copy of program to the startup group of the current user's profile (and an option to put it in the "all users" start up group although I can't think of a reason why you would want to do that).</p>
+
+<p>Right now I am leaning toward writing out a customized version of the DelayAppStart rather than creating a custom shortcut or something like that because a shortcut can be so easily broken simply by moving the original HTA file.</p>
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/subassy">subassy</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
