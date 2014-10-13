@@ -12,7 +12,7 @@
 <script language=JScript>
 
     window.onload = function () {
-        var height = screen.availHeight - 100;
+        var height = screen.availHeight - 500;
         self.resizeTo(640, height);
         self.moveTo(100, 50);
     }
@@ -21,18 +21,22 @@
     function fnAddToPathList() {
 
 
-     //   var sAppList = document.getElementById('PathList'); // point at the UL element via id
-       // var sPathOfApp = txtPathInputBox.value; // this is supposed to be the value of the input box
-        //txtPathInputBox.value = "some other value";
-        experimentSpan.innerHTML = "some other value";
-   //     var newEl = document.createElement('li');
-      //  var newText = document.createTextNode(sPathOfApp);
+        var sAppList = document.getElementById('PathList'); // point at the UL element via id
 
-        // newEl.appendChild(newText);
-        txtPathInputBox.innerText = "new value";
+        var elem = document.getElementById("txtPathInputBox"); // Get text field contents
 
-   //     var objPosition = sAppList[0];
-   //     objPosition.appendChild(newEl);
+        var sPathInputContents = elem.value;
+        
+        var newEl = document.createElement('li'); // create a bullet point for the UL above
+        var newText = document.createTextNode(sPathInputContents); // contents for the the new li
+        // note: no IE 8 trim() function for strings :-(
+
+        newEl.appendChild(newText); // put the contents in the bullet point...
+
+        sAppList.appendChild(newEl);
+        elem.value = "Enter a path";
+
+
     }
 
 </script>
@@ -40,17 +44,22 @@
     <div class="body">
 
 
-        <!--
-            	<h1>setInterval Method Sample</h1>
-	<span id="oTimer" style="font-size: 16pt; font-weight: bold; font-family: Times; color: #0000FF;">
-	Interval Stopped</span>
-	<p><input type="button" value="Start Interval" onclick="fnStartInterval()">
-	<input type="button" value="Run Exe" onclick="fnForTheCalling()">
-            -->
+
         <p>
-            <span id="experimentSpan">Some value</span>
+
+
+
+
             <form>
-        <input name="txtPathInputBox" value="Enter a path" size="50" />
+        <input type="text" id="txtPathInputBox" value="Enter a path" size="50"  />
+
+
+
+
+                <!---
+        <input type="text" id="example" onclick="ChangeSomeText()"> <!-- // Setup text field 
+                    -->
+                
             <select id="iSecBox">
                 <option value="1">1</option>
                 <option value="2">2</option>
