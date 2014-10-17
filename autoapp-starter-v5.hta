@@ -20,7 +20,7 @@ ul {
 }
 
 li {
-	background-color: #ec8b68;
+	background-color: #0000ff;
 	color: #fff;
 	border-top: 1px solid #fe9772;
 	border-bottom: 1px solid #9f593f;
@@ -51,18 +51,31 @@ li {
         var elem = document.getElementById("txtPathInputBox"); // Get text field contents
 
         var sPathInputContents = elem.value;
-        
+
+        var sNewlyTrimmed = vbsTrimString(sPathInputContents);
+
         var newEl = document.createElement('li'); // create a bullet point for the UL above
-        var newText = document.createTextNode(sPathInputContents); // contents for the the new li
+        var newText = document.createTextNode(sNewlyTrimmed); // contents for the the new li
         // note: no IE 8 js trim() function for strings :-(
 
         newEl.appendChild(newText); // put the contents in the bullet point...
 
         sAppList.appendChild(newEl);
         elem.value = "Enter a path";
+
+
     }
 
 </script>
+
+<script language="vbscript">
+    Function vbsTrimString(sPassString)
+        vbsTrimString = Trim(sPassString)
+    End Function
+</script>
+
+
+
 </head>
     <div class="body">
 
