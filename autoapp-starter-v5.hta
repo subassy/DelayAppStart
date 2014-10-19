@@ -62,38 +62,18 @@ li {
 
         // grab the form by id
         var elGetFormID = document.getElementById('mainForm');
-
-        // create select box and set its id attribute
-        // still have to attach to form, will do that below
+        // do some element creating
         var elSelectBox = document.createElement('select');
-        elSelectBox.setAttribute('id', 'iSecBox');
-
-        //elGetFormID.appendChild(elSelectBox);
-
-        // create option boxes with both content and IDs of 0 - 59
-        //as a test, using 1 for both value and id attributes
         var elOptBox = document.createElement('option');
+        var newOptText = document.createTextNode('1');
+        // set some attributes...
+        elSelectBox.setAttribute('id', 'iSecBox');
         elOptBox.setAttribute('id', '1');
         elOptBox.setAttribute('value', '1');
-
-        var newOptText = document.createTextNode('1');
+        // wire everything up to the DOM so you can see it...
         elOptBox.appendChild(newOptText);
-
         elSelectBox.appendChild(elOptBox);
-
-        // may need to add the text content in addition/instead of 
-        // the value attribute
-        
-
-        // next is attaching...
-        // first attach the selectbox to the existing form...
         elGetFormID.appendChild(elSelectBox);
-
-        //Then grab the select box by id and assign variable...
-        //var elGetSelBoxID = document.getElementById('iSecBox');
-
-
-
 
     }
 
