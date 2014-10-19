@@ -52,13 +52,7 @@ li {
         // not just by calling the function
         // and the window.onload actually works as that event
 /****************************** sample of working DOM adding ***********
-        var sListOfApps = document.getElementById('PathList');
-        var newILElem = document.createElement('li');
-        var sTextForLI = document.createTextNode('new li element');
 
-        newILElem.appendChild(sTextForLI);
-        sListOfApps.appendChild(newILElem);
-*************************************************************/
 
         // grab the form by id
         var elGetFormID = document.getElementById('mainForm');
@@ -74,6 +68,54 @@ li {
         elOptBox.appendChild(newOptText);
         elSelectBox.appendChild(elOptBox);
         elGetFormID.appendChild(elSelectBox);
+*************************************************************/
+
+       // var elGetFormID = document.getElementById('mainForm');
+        //var elSelectBox = document.createElement('select');
+        //elSelectBox.setAttribute('id', 'iSecBox');
+
+        //var elOptBox = document.createElement('option');
+
+        /*************************************************************/
+
+        var GetSelBoxID = document.getElementById('iSecBox');
+        /* 
+        // possible alternative method of doing same 
+        var TempNewOpt = document.createElement("option");
+        TempNewOpt.text = "1";
+        GetSelBoxID.add(Option, GetSelBoxID[0]);
+        GetSelBoxID.options
+        // possible alternative method of doing same
+        // from http://www.w3schools.com/jsref/met_select_add.asp
+        */
+
+        for (var i = 0; i < 60; i++) {
+            elAddOpt = new Option(i, i);
+            GetSelBoxID.options[GetSelBoxID.options.length] = elAddOpt;
+            elAddOpt.setAttribute('id', i);
+            elAddOpt.setAttribute('value', 'i');
+        /*************************************************************/
+            //GetSelBoxID.options[]
+
+            //elOptBox.setAttribute('id', i);
+            //elOptBox.setAttribute('value', i);
+          //  var newOptText = document.createTextNode(i);
+            //elOptBox.appendChild(newOptText);
+        }
+
+
+        
+   //     elAddOpt.appendChild(newOptText);
+
+
+
+
+
+        // the end/outside the for-loop
+        // wire everything up to the DOM so you can see it...
+
+        //elSelectBox.appendChild(elOptBox);
+        //elGetFormID.appendChild(elSelectBox);
 
     }
 
@@ -117,7 +159,7 @@ li {
             <form id="mainForm">
         <input type="text" id="txtPathInputBox" value="Enter a path" size="50"  />
 
-
+        <select id="iSecBox"></select>
 
 
 
@@ -186,7 +228,7 @@ li {
 
                     -->
 
-            <input type="button" value="Add" onclick="fnCreateSecondsDropDown()">
+            <input type="button" value="Add" onclick="fnAddToPathList()">
             </form>
 	</p>
         <p>
