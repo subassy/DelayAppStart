@@ -40,11 +40,64 @@ li {
         var height = screen.availHeight - 500;
         self.resizeTo(640, height);
         self.moveTo(100, 50);
+
+        fnCreateSecondsDropDown();
     }
  
 
-    function fnAddToPathList() {
 
+    function fnCreateSecondsDropDown() {
+
+        // this stuff seems to only run via an event, 
+        // not just by calling the function
+        // and the window.onload actually works as that event
+/****************************** sample of working DOM adding ***********
+        var sListOfApps = document.getElementById('PathList');
+        var newILElem = document.createElement('li');
+        var sTextForLI = document.createTextNode('new li element');
+
+        newILElem.appendChild(sTextForLI);
+        sListOfApps.appendChild(newILElem);
+*************************************************************/
+
+        // grab the form by id
+        var elGetFormID = document.getElementById('mainForm');
+
+        // create select box and set its id attribute
+        // still have to attach to form, will do that below
+        var elSelectBox = document.createElement('select');
+        elSelectBox.setAttribute('id', 'iSecBox');
+
+        //elGetFormID.appendChild(elSelectBox);
+
+        // create option boxes with both content and IDs of 0 - 59
+        //as a test, using 1 for both value and id attributes
+        var elOptBox = document.createElement('option');
+        elOptBox.setAttribute('id', '1');
+        elOptBox.setAttribute('value', '1');
+
+        var newOptText = document.createTextNode('1');
+        elOptBox.appendChild(newOptText);
+
+        elSelectBox.appendChild(elOptBox);
+
+        // may need to add the text content in addition/instead of 
+        // the value attribute
+        
+
+        // next is attaching...
+        // first attach the selectbox to the existing form...
+        elGetFormID.appendChild(elSelectBox);
+
+        //Then grab the select box by id and assign variable...
+        //var elGetSelBoxID = document.getElementById('iSecBox');
+
+
+
+
+    }
+
+    function fnAddToPathList() {
 
         var sAppList = document.getElementById('PathList'); // point at the UL element via id
 
@@ -63,8 +116,9 @@ li {
         sAppList.appendChild(newEl);
         elem.value = "Enter a path";
 
-
     }
+
+    //fnCreateSecondsDropDown();
 
 </script>
 
@@ -80,10 +134,14 @@ li {
     <div class="body">
 
         <p>
-            <form>
+            <form id="mainForm">
         <input type="text" id="txtPathInputBox" value="Enter a path" size="50"  />
 
-                
+
+
+
+
+                <!-- 
             <select id="iSecBox">
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -145,7 +203,10 @@ li {
                 <option value="9">58</option>
                 <option value="9">59</option>
             </select>
-            <input type="button" value="Add" onclick="fnAddToPathList()">
+
+                    -->
+
+            <input type="button" value="Add" onclick="fnCreateSecondsDropDown()">
             </form>
 	</p>
         <p>
