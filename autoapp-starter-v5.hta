@@ -50,12 +50,12 @@ li {
 
         var elem = document.getElementById("txtPathInputBox"); // Get text field contents
 
-        var sPathInputContents = elem.value;
+        var sPathInputContents = vbsTrimString(elem.value);
 
-        var sNewlyTrimmed = vbsTrimString(sPathInputContents);
+       // var sNewlyTrimmed = vbsTrimString(sPathInputContents);
 
         var newEl = document.createElement('li'); // create a bullet point for the UL above
-        var newText = document.createTextNode(sNewlyTrimmed); // contents for the the new li
+        var newText = document.createTextNode(sPathInputContents); // contents for the the new li
         // note: no IE 8 js trim() function for strings :-(
 
         newEl.appendChild(newText); // put the contents in the bullet point...
