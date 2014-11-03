@@ -47,7 +47,7 @@ li {
 
 
     function fnCreateSecondsDropDown() {
-
+        
         // this stuff seems to only run via an event, 
         // not just by calling the function
         // and the window.onload actually works as that event
@@ -113,8 +113,15 @@ li {
 
         //elSelectBox.appendChild(elOptBox);
         //elGetFormID.appendChild(elSelectBox);
-
+        var addto = document.getElementById('spHeader');
+        addto.onclick = evAddViaSpan;
     }
+
+    function evAddViaSpan() {
+        // this is funciton for the actual adding of the paths to the list
+        //alert("clicked the add span"); //just for debugging purposes
+    }
+
 
     function fnAddToPathList() {
 
@@ -137,10 +144,7 @@ li {
 
     }
 
-function evAddViaSpan() {
-    var addto = document.getElementById('spHeader');
-    
-}
+
 
     //fnCreateSecondsDropDown();
 
