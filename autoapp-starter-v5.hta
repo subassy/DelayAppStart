@@ -42,7 +42,7 @@ li {
         self.moveTo(100, 50);
 
         fnCreateSecondsDropDown();
-    }
+    } 
  
 
 
@@ -94,6 +94,7 @@ li {
             GetSelBoxID.options[GetSelBoxID.options.length] = elAddOpt;
             elAddOpt.setAttribute('id', i);
             elAddOpt.setAttribute('value', 'i');
+            
         /*************************************************************/
             //GetSelBoxID.options[]
 
@@ -122,9 +123,9 @@ li {
     function fnAddToPathList() {
 
         var sAppList = document.getElementById('PathList'); // point at the UL element via id
-
+        
         var elem = document.getElementById("txtPathInputBox"); // Get text field contents
-
+        
         var sPathInputContents = vbsTrimString(elem.value);
 
        // var sNewlyTrimmed = vbsTrimString(sPathInputContents);
