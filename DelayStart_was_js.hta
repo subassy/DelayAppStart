@@ -1,0 +1,37 @@
+<html>
+
+<head>
+
+<title>inputbox testing</title>
+
+<HTA:APPLICATION
+  APPLICATIONNAME="Auto-appstarter-v4"
+  VERSION="4"
+  CONTEXTMENU="yes"/>    
+</head>
+
+
+
+
+<script type="text/javascript">
+
+    function ChangeSomeText() {
+        var elem = document.getElementById("example"); // Get text field
+        elem.value = "My default value"; // Change field
+    }
+</script>
+
+
+<body>
+
+
+
+
+
+    <form>
+        <input type="text" id="example" onclick="ChangeSomeText()"> <!-- // Setup text field -->
+    </form>
+
+
+
+</body>
