@@ -6,7 +6,7 @@
 
 <HTA:APPLICATION
   APPLICATIONNAME="Auto-appstarter-v4"
-  VERSION="4"
+  VERSION="5"
   CONTEXTMENU="yes"/>    
 
  
@@ -91,6 +91,8 @@ li {
 
         for (var i = 0; i < 60; i++) {
             elAddOpt = new Option(i, i);
+            //elAddOpt = new Option()
+            //elAddOpt.text
             GetSelBoxID.options[GetSelBoxID.options.length] = elAddOpt;
             elAddOpt.setAttribute('id', i);
             elAddOpt.setAttribute('value', 'i');
@@ -120,6 +122,19 @@ li {
     function evAddViaSpan() {
         // this is funciton for the actual adding of the paths to the list
         //alert("clicked the add span"); //just for debugging purposes
+        var SpanPathContent = document.getElementById("spHeader2");
+        var txtBoxContent = document.getElementById("txtPathInputBox");
+
+        var spanCounterContent = document.getElementById("spHeader3");
+        var optCounterDrop = document.getElementById("iSecBox");
+
+        spanCounterContent.innerHTML = optCounterDrop.options.namedItem;
+
+
+
+        SpanPathContent.innerHTML = txtBoxContent.value;
+        //spHeader2.textContent = ;
+            
     }
 
 
