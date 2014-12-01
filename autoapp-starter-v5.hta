@@ -4,13 +4,16 @@
 
 <title>auto-app-starter v5</title>
 
+    
 <HTA:APPLICATION
   APPLICATIONNAME="Auto-appstarter-v4"
   VERSION="5"
   CONTEXTMENU="yes"/>    
 
- 
-
+ <!-- 
+     Todo:
+     Add number of seconds 
+     -->
 <style>
 ul {
 	background-color: #584f4d;
@@ -128,7 +131,7 @@ li {
         var spanCounterContent = document.getElementById("spHeader3");
         var optCounterDrop = document.getElementById("iSecBox");
 
-        spanCounterContent.innerHTML = optCounterDrop.options.namedItem;
+        spanCounterContent.innerHTML = optCounterDrop.options[optCounterDrop.selectedIndex].text;
 
 
 
@@ -170,6 +173,7 @@ li {
         vbsTrimString = Trim(sPassString)
     End Function
 </script>
+
 </head>
     <body>
     <div class="body">
@@ -195,7 +199,7 @@ Add
                 
             </ul>
         </p>
-    </div>
+    </div> <!-- body -->
 
 
 
