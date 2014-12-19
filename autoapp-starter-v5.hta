@@ -131,13 +131,13 @@ li {
         var spanCounterContent = document.getElementById("spHeader3");
         var optCounterDrop = document.getElementById("iSecBox");
 
-        spanCounterContent.innerHTML = optCounterDrop.options[optCounterDrop.selectedIndex].text;
+        spanCounterContent.innerHTML = spanCounterContent.innerHTML + "<BR>" + optCounterDrop.options[optCounterDrop.selectedIndex].text;
 
 
 
-        SpanPathContent.innerHTML = txtBoxContent.value;
+        SpanPathContent.innerHTML = SpanPathContent.innerHTML + "<br>" + txtBoxContent.value;
         //spHeader2.textContent = ;
-            
+        //fnAddToPathList();
     }
 
 
